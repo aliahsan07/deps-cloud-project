@@ -11,9 +11,11 @@ As a result, that project wasn't easy to:
 
 ## Overview
 
-* The [Repository Discovery Service](https://github.com/deps-cloud/rds) abstracts away repository providers (like GitHub, GitLab, or BitBucket).
-* The [Dependency Extraction Service](https://github.com/deps-cloud/des) consumes repository files and returns the various management files it discovers.
-* The [Dependency Tracking Service](https://github.com/deps-cloud/dts) consumes dependency management files and stores them in a database.
+* The [Repository Discovery Service](https://github.com/deps-cloud/rds) (`rds`) abstracts away repository providers (like GitHub, GitLab, or BitBucket).
+* The [Dependency Extraction Service](https://github.com/deps-cloud/des) (`des`) consumes repository files and returns the various management files it discovers.
+* The [Dependency Tracking Service](https://github.com/deps-cloud/dts) (`dts`) consumes dependency management files and stores them in a database.
+* The [Dependency Indexing Service](https://github.com/deps-cloud/dis) (`dis`) pulls repositories from `rds`, uses `des` to extract dependencies, then stores the results in `dts`.
+* [gitfs](https://github.com/deps-cloud/gitfs) is a FUSE file system that provides a virtual file system over shallowly cloned repositories.
 
 ### Coming Soon
 
