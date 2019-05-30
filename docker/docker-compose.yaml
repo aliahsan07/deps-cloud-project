@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  rds:
+    image: depscloud/rds:latest
+    hostname: rds
+    volumes:
+    - ./rds.yaml:/etc/rds/config.yaml
+    command:
+    - --config=/etc/rds/config.yaml
+  des:
+    image: depscloud/des:latest
+    hostname: des
+  dts:
+    image: depscloud/dts:latest
+    hostname: dts
+  dis:
+    image: depscloud/dis:latest
+    hostname: dis
+    depends_on:
+    - rds
+    - des
+    - dts
