@@ -11,16 +11,23 @@ As a result, that project wasn't easy to:
 
 ## Overview
 
-* The [Repository Discovery Service](https://github.com/deps-cloud/rds) (`rds`) abstracts away repository providers (like GitHub, GitLab, or BitBucket).
-* The [Dependency Extraction Service](https://github.com/deps-cloud/des) (`des`) consumes repository files and returns the various management files it discovers.
-* The [Dependency Tracking Service](https://github.com/deps-cloud/dts) (`dts`) consumes dependency management files and stores them in a database.
-* The [Dependency Indexing Service](https://github.com/deps-cloud/dis) (`dis`) pulls repositories from `rds`, uses `des` to extract dependencies, then stores the results in `dts`.
-* [gitfs](https://github.com/deps-cloud/gitfs) is a FUSE file system that provides a virtual file system over shallowly cloned repositories.
+A complete overview of the system's architecture can be found [here](systems/README.md).
+The system is currently comprised of 5 parts:
+
+* The [Repository Discovery Service](systems/repository-discovery.md) (`rds`) abstracts away repository providers (like GitHub, GitLab, or BitBucket).
+* The [Dependency Extraction Service](systems/dependency-extractor.md) (`des`) consumes repository files and returns the various management files it discovers.
+* The [Dependency Tracking Service](systems/dependency-tracker.md) (`dts`) consumes dependency management files and stores them in a database.
+* The [Dependency Indexing Service](systems/dependency-indexer.md) (`dis`) pulls repositories from `rds`, uses `des` to extract dependencies, then stores the results in `dts`.
+* [gitfs](systems/gitfs.md) is a FUSE file system that provides a virtual file system over shallowly cloned repositories.
+
+## Getting Started
+
+You can now start using this project by running the system via docker.
+For more information on how to, check out our [docker](docker) section of the project.
 
 ### Coming Soon
 
 * A process responsible for consuming repositories from `rds`, streaming their data to `des` for extraction, then storing the resulting data in `dts`.
-* A `docker-compose.yaml` file for a standalone setup, facilitating adoption
 * [Kubernetes](https://kubernetes.io) configuration for easy high availability deployment.
 
 ### Longer Term
