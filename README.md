@@ -17,8 +17,8 @@ The system is currently comprised of 5 parts:
 * The [Repository Discovery Service](systems/repository-discovery.md) (`rds`) abstracts away repository providers (like GitHub, GitLab, or BitBucket).
 * The [Dependency Extraction Service](systems/dependency-extractor.md) (`des`) consumes repository files and returns the various management files it discovers.
 * The [Dependency Tracking Service](systems/dependency-tracker.md) (`dts`) consumes dependency management files and stores them in a database.
-* The [Dependency Indexing Service](systems/dependency-indexer.md) (`dis`) pulls repositories from `rds`, uses `des` to extract dependencies, then stores the results in `dts`.
-* [gitfs](systems/gitfs.md) is a FUSE file system that provides a virtual file system over shallowly cloned repositories.
+* The [Dependency Indexing Service](systems/dependency-indexer.md) (`dis`) coordinates work with `rds`, `des`, and `dts`.
+* [gitfs](systems/gitfs.md) provides a virtual file system to repositories discovered by `rds`.
 
 ## Getting Started
 
@@ -27,15 +27,12 @@ For more information on how to, check out our [docker](docker) section of the pr
 
 ### Coming Soon
 
-* A process responsible for consuming repositories from `rds`, streaming their data to `des` for extraction, then storing the resulting data in `dts`.
 * [Kubernetes](https://kubernetes.io) configuration for easy high availability deployment.
 
 ### Longer Term
 
 * A UI for being able to visualize and track dependencies on projects.
-* Project dependency intelligence.
 * Automation to aid in library management.
-* Provide system as a paid service for those who do not want to run it themselves.
 
 ## Project Space
 
