@@ -1,4 +1,5 @@
 accounts:
 - github:
+    strategy: HTTP
     organizations:
     - deps-cloud
