@@ -5,7 +5,13 @@ More specifically, [docker-compose](https://docs.docker.com/compose/).
 Each system can be run independently, but is much easier to do via the composition.
 In order to get started with the docker-compose set up, you only need to clone this project.
 
-**NOTE: The docker images for ecosystem are currently only produced for Linux. Binaries are available for Linux, OSX, and Windows.**
+**NOTE: The docker images for ecosystem are currently only produced for Linux.**
+**Binaries are available for Linux, OSX, and Windows.**
+
+## Running as a Standalone System
+
+The system can be configured to run as a standalone system.
+By default, the system defaults to using a SQLite3 database.
 
 ```
 $ git clone git@github.com:deps-cloud/deps-cloud-project.git
@@ -58,3 +64,20 @@ dis_1  | time="2019-05-31T03:28:14Z" level=info msg="[https://github.com/deps-cl
 dis_1  | time="2019-05-31T03:28:14Z" level=info msg="[https://github.com/deps-cloud/deps.cloud.git] extracting dependencies"
 dis_1  | time="2019-05-31T03:28:14Z" level=info msg="[https://github.com/deps-cloud/deps.cloud.git] storing dependencies"
 ```
+
+## Swapping SQLite3 for MySQL
+
+The storage layer for the tracking service supports both SQLite and MySQL.
+The `docker-compose.mysql.yaml` file contains configuration demonstrating how to back the system with a MySQL database.
+If you're going to try running this system, you will first need to bring up the storage tier.
+Once MySQL starts, you can bring up the remaining processes.
+
+```
+$ docker-compose -f docker-compose.mysql.yaml up -d mysql
+
+    ## wait for mysql to complete startup before bringing up the rest ##
+
+$ docker-compose -f docker-compose.mysql.yaml up -d
+```
+
+When configured with MySQL, `dts` can be scaled horizontally.

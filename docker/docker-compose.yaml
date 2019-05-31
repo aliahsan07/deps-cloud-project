@@ -1,6 +1,10 @@
 version: "3.7"
 
 services:
+  dts:
+    image: depscloud/dts:latest
+    hostname: dts
+
   rds:
     image: depscloud/rds:latest
     hostname: rds
@@ -8,12 +12,11 @@ services:
     - ./rds.yaml:/etc/rds/config.yaml
     command:
     - --config=/etc/rds/config.yaml
+
   des:
     image: depscloud/des:latest
     hostname: des
-  dts:
-    image: depscloud/dts:latest
-    hostname: dts
+    
   dis:
     image: depscloud/dis:latest
     hostname: dis
