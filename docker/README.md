@@ -1,7 +1,7 @@
 # Getting Started using Docker
 
-Right now, the easiest way to get started with the project is by using [docker]().
-More specifically, [docker-compose]().
+Right now, the easiest way to get started with the project is by using [docker](https://www.docker.com/).
+More specifically, [docker-compose](https://docs.docker.com/compose/).
 Each system can be run independently, but is much easier to do via the composition.
 In order to get started with the docker-compose set up, you only need to clone this project.
 
