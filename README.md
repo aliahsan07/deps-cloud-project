@@ -40,8 +40,9 @@ This space will be used to track end user feature requests as well as general pr
 
 ## Interested in the project?
 
-Follow this project by starring this repository.
-I plan on sending out some periodic updates as components become more readily available.
+Follow this project by watching this repository.
+This will give you updates on the any issue that is opened and resolved within this project.
+Since this project will be tracking more of the cross-cutting work items, it should provide a high level overview of what's going on.
 
 ## Looking for help
 
