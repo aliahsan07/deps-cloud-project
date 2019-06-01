@@ -1,9 +1,43 @@
 # Contributing
 
-A good chunk of this page can probably be thrown into a devtools docker container, but I figured I'd at least document it for now.
+All projects are open to contributions.
 
-## Developer Tooling
+## Developing using Docker
 
+In order to start developing using Docker, first deploy the stack using the directions .
+You can deploy the stack using either SQLite or MySQL as a backend data store.
+
+### Building Local Changes
+
+To help facilitate contributions, each project has a `docker` target that builds the project inside a docker container.
+
+| Project | `docker` Target |
+|---|---|
+| Golang | `make docker` |
+| NodeJS | `npm run docker` |
+
+The target produces a tagged image that you can deployed using the [docker stack](../docker).
+
+### Deploying Local Changes
+
+Once you've produced an image containing your local changes, you can easily update your stack to pick up the new image.
+
+```
+$ docker-compose up -d
+```
+
+### Testing Indexing Pipeline
+
+If you've made a change to the indexing pipeline, you can test it by restarting the [dependency indexer](../systems/dependency-indexer.md).
+
+```
+$ docker-compose restart dis
+```
+
+## Developing Locally
+
+Local targets are available for development.
+In order to leverage those targets, you will need to install the appropriate tooling.
 While most projects are written in Golang, there are a few that will require NodeJS or Ruby.
 To help simplify some of the setup, I've included a general guide to managing these versions locally.
 
