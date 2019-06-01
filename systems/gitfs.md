@@ -10,5 +10,6 @@ This system is primarily focused on improving the automation experience by remov
 
 ## Resources
 
+* [Golang](https://golang.org/)
 * [GitHub Repository](https://github.com/deps-cloud/gitfs)
 * [Travis CI/CD Job](https://travis-ci.com/deps-cloud/gitfs)

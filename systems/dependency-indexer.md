@@ -7,5 +7,6 @@ The results are then stored in `dts` where the information can be readily querie
 
 ## Resources
 
+* [Golang](https://golang.org/)
 * [GitHub Repository](https://github.com/deps-cloud/dis)
 * [Travis CI/CD Job](https://travis-ci.com/deps-cloud/dis)

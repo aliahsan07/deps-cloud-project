@@ -7,5 +7,7 @@ Due to the query pattern of this system and need to long term support, I intenti
 
 ## Resources
 
+* [Golang](https://golang.org/)
 * [GitHub Repository](https://github.com/deps-cloud/dts)
 * [Travis CI/CD Job](https://travis-ci.com/deps-cloud/dts)
+* [Dropbox's Edgestore](https://www.youtube.com/watch?v=VZ-zJEWi-Vo)

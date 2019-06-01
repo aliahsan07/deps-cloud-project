@@ -7,5 +7,6 @@ It also enables custom integrations through a Generic remote that configured to 
 
 ## Resources
 
+* [Golang](https://golang.org/)
 * [GitHub Repository](https://github.com/deps-cloud/rds)
 * [Travis CI/CD Job](https://travis-ci.com/deps-cloud/rds)
