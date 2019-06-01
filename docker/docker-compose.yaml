@@ -24,3 +24,13 @@ services:
     - rds
     - des
     - dts
+
+  gateway:
+    image: depscloud/gateway:latest
+    hostname: gateway
+    depends_on:
+    - rds
+    - des
+    - dts
+    ports:
+    - 8080:8080
