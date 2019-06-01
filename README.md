@@ -53,6 +53,8 @@ We will probably collapse onto a single chat system at some point.
 Given the current project status, I figured having more means of communication is better than none.
 If you'd like to help contribute, take a look at the opportunities below and reach out to the team to offer assistance.
 
+See the [contributing](contributing) space for more details.
+
 ### As a backend engineer
 
 Most of the backend to this system is written in [Golang](https://golang.org/).
