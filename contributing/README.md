@@ -11,10 +11,10 @@ You can deploy the stack using either SQLite or MySQL as a backend data store.
 
 To help facilitate contributions, each project has a `docker` target that builds the project inside a docker container.
 
-| Project | `docker` Target |
-|---|---|
-| Golang | `make docker` |
-| NodeJS | `npm run docker` |
+| Project | Managed by | `docker` Target |
+|---|---|---|
+| Golang | `Makefile` | `make docker` |
+| NodeJS | `package.json` | `npm run docker` |
 
 The target produces a tagged image that you can deployed using the [docker stack](../docker).
 
