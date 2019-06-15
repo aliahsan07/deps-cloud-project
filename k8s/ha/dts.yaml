@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: depscloud-system
+  name: dts
+  labels:
+    app: depscloud
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: dts
+  template:
+    metadata:
+      labels:
+        app: dts
+    spec:
+      initContainers:
+      - name: service-precheck
+        image: mjpitz/service-precheck:latest
+        imagePullPolicy: IfNotPresent
+        args:
+        - "mysql"
+        - "mysql-read"
+      containers:
+      - name: dts
+        image: depscloud/dts:latest
+        imagePullPolicy: IfNotPresent
+        args:
+        - --storage-driver=mysql
+        - --storage-address=user:password@tcp(mysql:3306)/depscloud
+
+---
+# Headless service for stable DNS entries of members
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: depscloud-system
+  name: dts
+  labels:
+    app: depscloud
+spec:
+  selector:
+    app: dts
+  clusterIP: None
+  ports:
+  - name: grpc
+    port: 8090
+    targetPort: 8090

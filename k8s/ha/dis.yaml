@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: depscloud-system
+  name: dis
+  labels:
+    app: depscloud
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: dis
+  template:
+    metadata:
+      labels:
+        app: dis
+    spec:
+      initContainers:
+      - name: service-precheck
+        image: mjpitz/service-precheck:latest
+        imagePullPolicy: IfNotPresent
+        args:
+        - "rds"
+        - "des"
+        - "dts"
+      containers:
+      - name: dis
+        image: depscloud/dis:latest
+        imagePullPolicy: IfNotPresent

@@ -28,10 +28,8 @@ The system is currently comprised of 5 parts:
 ## Getting Started
 
 You can now start using this project by running the system via [Docker](docker) or [Kubernetes](k8s).
-
-### Coming Soon
-
-* [Kubernetes](https://kubernetes.io) configuration for easy high availability deployment.
+Our Kubernetes setup also includes an HA configuration out of box.
+Two systems, `rds` and `dis` are not yet highly available.
 
 ### Longer Term
 

@@ -14,4 +14,8 @@ $ kubectl apply -f standalone/
 
 ## Swapping SQLite3 for MySQL
 
-TBD
+```
+$ git clone git@github.com:deps-cloud/deps-cloud-project.git
+$ cd deps-cloud-project/k8s
+$ kubectl apply -f ha/
+```
