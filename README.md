@@ -27,8 +27,7 @@ The system is currently comprised of 5 parts:
 
 ## Getting Started
 
-You can now start using this project by running the system via docker.
-For more information on how to, check out our [docker](docker) section of the project.
+You can now start using this project by running the system via [Docker](docker) or [Kubernetes](k8s).
 
 ### Coming Soon
 
