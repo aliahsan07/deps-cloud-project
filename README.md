@@ -31,6 +31,8 @@ You can now start using this project by running the system via [Docker](docker) 
 Our Kubernetes setup also includes an HA configuration out of box.
 Two systems, `rds` and `dis` are not yet highly available.
 
+Once you have the system up and running, you can learn how to configure it for your desired integrations by stopping by our [configuration](configuration) section.
+
 ### Longer Term
 
 * A UI for being able to visualize and track dependencies on projects.

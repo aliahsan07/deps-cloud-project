@@ -1,0 +1,37 @@
+# Getting Started Using GitHub
+
+```yaml
+accounts:
+# full github schema
+- github:
+    base_url: <base_url>
+    upload_url: <base_url>
+    users:
+    - <username>
+    organizations:
+    - <organization>
+    strategy: SSH | HTTP
+    oauth2:
+      token: <oauth_token>
+      token_type: <token_type>
+      refresh_token: <refresh_token>
+      expiry: <expiry>
+```
+
+Due to the variance in each of the client, there are a few oddities between each of the implementations.
+While we work on getting parity between each of the providers take note that this implementation:
+* does not pull groups for the authenticated user
+* pulls groups for the configured users
+* pulls repositories for all users and groups (configured and discovered)
+
+## Example
+
+Crawl all of Google's public repositories on [GitHub](https://github.com/google).
+
+```yaml
+accounts:
+- github:
+    organizations:
+    - google
+    strategy: HTTP
+```
