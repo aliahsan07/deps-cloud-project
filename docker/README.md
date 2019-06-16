@@ -46,7 +46,7 @@ $ curl -s "http://localhost:8080/v1/dependencies/managed?url=https%3A%2F%2Fgithu
   "url": "https://github.com/deps-cloud/rds.git",
   "managed": [
     {
-      "language": "golang",
+      "language": "go",
       "organization": "github.com",
       "module": "deps-cloud/rds"
     },
@@ -62,11 +62,11 @@ $ curl -s "http://localhost:8080/v1/dependencies/managed?url=https%3A%2F%2Fgithu
 This information can be used to look up consumers of the library using the `/v1/dependencies` endpoint.
 
 ```
-$ curl -s "http://localhost:8080/v1/dependencies?language=golang&organization=github.com&module=deps-cloud%2Frds" | jq
+$ curl -s "http://localhost:8080/v1/dependencies?language=go&organization=github.com&module=deps-cloud%2Frds" | jq
 {
   "result": {
     "dependency": {
-      "language": "golang",
+      "language": "go",
       "organization": "github.com",
       "module": "deps-cloud/finch"
     }
@@ -75,7 +75,7 @@ $ curl -s "http://localhost:8080/v1/dependencies?language=golang&organization=gi
 {
   "result": {
     "dependency": {
-      "language": "golang",
+      "language": "go",
       "organization": "github.com",
       "module": "deps-cloud/gitfs"
     }
@@ -84,7 +84,7 @@ $ curl -s "http://localhost:8080/v1/dependencies?language=golang&organization=gi
 {
   "result": {
     "dependency": {
-      "language": "golang",
+      "language": "go",
       "organization": "github.com",
       "module": "deps-cloud/dis"
     }
@@ -93,7 +93,7 @@ $ curl -s "http://localhost:8080/v1/dependencies?language=golang&organization=gi
 {
   "result": {
     "dependency": {
-      "language": "golang",
+      "language": "go",
       "organization": "github.com",
       "module": "deps-cloud/gateway"
     }
