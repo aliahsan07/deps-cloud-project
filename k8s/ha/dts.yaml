@@ -33,6 +33,13 @@ spec:
         args:
         - --storage-driver=mysql
         - --storage-address=user:password@tcp(mysql:3306)/depscloud
+        resources:
+          limits:
+            cpu: 200m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
 
 ---
 # Headless service for stable DNS entries of members

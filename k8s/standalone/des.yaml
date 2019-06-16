@@ -23,6 +23,13 @@ spec:
       - name: des
         image: depscloud/des:latest
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 200m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
 
 ---
 # Headless service for stable DNS entries of members

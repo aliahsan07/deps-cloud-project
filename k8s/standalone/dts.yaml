@@ -23,6 +23,13 @@ spec:
       - name: dts
         image: depscloud/dts:latest
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
 
 ---
 # Headless service for stable DNS entries of members
