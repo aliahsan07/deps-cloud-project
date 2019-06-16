@@ -42,7 +42,7 @@ spec:
       containers:
       - name: rds
         image: depscloud/rds:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         args:
         - "--config=/etc/rds/config.yaml"
         volumeMounts:

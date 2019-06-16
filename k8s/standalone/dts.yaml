@@ -22,7 +22,7 @@ spec:
       containers:
       - name: dts
         image: depscloud/dts:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 500m

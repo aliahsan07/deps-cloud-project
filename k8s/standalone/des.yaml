@@ -22,7 +22,7 @@ spec:
       containers:
       - name: des
         image: depscloud/des:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 200m
