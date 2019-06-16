@@ -24,7 +24,7 @@ gateway   NodePort   10.97.33.189   <none>        8080:31696/TCP   38s
 ```
 
 In production, this can be swapped for a `LoadBalancer`.
-With this NodePort, you can now curl the `/v1/repositories` endpoint.
+With this `NodePort`, you can now curl the `/v1/repositories` endpoint.
 
 ```
 $ curl -s "http://$(minikube ip):31696/v1/repositories" | jq
@@ -155,9 +155,9 @@ rds-7f6fdc879c-krjxl       1/1     Running   0          90s
 
 In the event that MySQL didn't come up, it's likely that you do not have a `StorageClass` configured for your cluster.
 
-Similar to the standalone instructions above, you can grab either the LoadBalancer IP or NodePort.
+Similar to the standalone instructions above, you can grab either the `LoadBalancer` IP or `NodePort`.
 When running in `minikube`, your `LoadBalancer` will never be assigned an External-IP.
-In this case, just use the NodePort in combination with your `minikube ip` address.
+In this case, just use the `NodePort` in combination with your `minikube ip` address.
 
 ```
 $ kubectl get services -n depscloud-system gateway
