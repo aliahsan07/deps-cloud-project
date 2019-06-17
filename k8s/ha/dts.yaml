@@ -32,7 +32,7 @@ spec:
         imagePullPolicy: Always
         args:
         - --storage-driver=mysql
-        - --storage-address=user:password@tcp(mysql:3306)/depscloud
+        - --storage-address=user:password@tcp(mysql-0.mysql:3306)/depscloud
         resources:
           limits:
             cpu: 200m
