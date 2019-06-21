@@ -117,3 +117,12 @@ $ docker-compose -f docker-compose.mysql.yaml up -d
 ```
 
 When configured with MySQL, `dts` can be scaled horizontally.
+
+## Swapping HTTP for SSH
+
+The `docker-compose.ssh.yaml` file demonstrates how an SSH key can be used in place of HTTP cloning.
+First, `rds` needs to be configured to return the SSH url's instead of the HTTP ones.
+Then, `dis` needs access to the known_hosts and an authorized SSH key.
+We currently do not support a password for the SSH key.
+To generate one, simply run `ssh-keygen -b 2048 -t rsa -f <output>` on command line.
+The private key is what will be passed into the indexer while the public key is uploaded to your integration.
