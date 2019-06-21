@@ -5,12 +5,12 @@ services:
     image: mysql:5.7
     hostname: mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "1"
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: depscloud
     healthcheck:
-      test: ["CMD", "ls", "-la", "/var/run/mysqld/mysqld.sock"]
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
       interval: 1m30s
       timeout: 10s
       retries: 3
