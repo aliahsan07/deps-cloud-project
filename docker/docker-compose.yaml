@@ -24,6 +24,9 @@ services:
     - rds
     - des
     - dts
+    command:
+    - --cron
+    - --workers=1
 
   gateway:
     image: depscloud/gateway:latest
