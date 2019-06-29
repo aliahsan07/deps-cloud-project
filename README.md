@@ -11,7 +11,7 @@ The information is then served over gRPC or REST for easy consumption by automat
 * [Contributing](contributing/README.md)
 * User Guides
   * [Configuration Examples](user_guides/configuration_examples.md)
-  * [Docker](user_guides/docker.md)
+  * [Docker](getting_started/README.md)
   * [Kubernetes](user_guides/kubernetes.md)
 
 ## Code of Conduct
