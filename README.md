@@ -9,9 +9,10 @@ The information is then served over gRPC or REST for easy consumption by automat
   * [GitHub](configuration/github.md)
   * [GitLab](configuration/gitlab.md)
 * [Contributing](contributing/README.md)
-* [User Guides](user_guides/README.md)
-  * [Docker](user_guides/docker/README.md)
-  * [Kubernetes](user_guides/k8s/README.md)
+* User Guides
+  * [Configuration Examples](user_guides/configuration_examples.md)
+  * [Docker](user_guides/docker.md)
+  * [Kubernetes](user_guides/k8s.md)
 
 ## Code of Conduct
 
