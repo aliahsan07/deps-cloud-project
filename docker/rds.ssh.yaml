@@ -1,5 +1,0 @@
-accounts:
-- github:
-    strategy: SSH
-    organizations:
-    - deps-cloud

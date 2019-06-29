@@ -5,14 +5,6 @@ services:
     image: depscloud/dts:latest
     hostname: dts
 
-  rds:
-    image: depscloud/rds:latest
-    hostname: rds
-    volumes:
-    - ./rds.yaml:/etc/rds/config.yaml
-    command:
-    - --config=/etc/rds/config.yaml
-
   des:
     image: depscloud/des:latest
     hostname: des
@@ -21,18 +13,19 @@ services:
     image: depscloud/dis:latest
     hostname: dis
     depends_on:
-    - rds
     - des
     - dts
+    volumes:
+    - ./rds.yaml:/etc/rds/config.yaml
     command:
     - --cron
+    - --rds-config=/etc/rds/config.yaml
     - --workers=1
 
   gateway:
     image: depscloud/gateway:latest
     hostname: gateway
     depends_on:
-    - rds
     - des
     - dts
     ports:

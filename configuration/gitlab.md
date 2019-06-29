@@ -1,4 +1,4 @@
-# Getting Started Using GitLab
+# Configuring for GitLab
 
 GitLab is a common provider used by those seeking an on-premise solution who do not want their source code managed by a third party provider.
 Many companies choose to run this system internally.

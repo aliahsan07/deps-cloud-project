@@ -34,9 +34,8 @@ spec:
           initContainers:
           - name: service-precheck
             image: mjpitz/service-precheck:latest
-            imagePullPolicy: IfNotPresent
+            imagePullPolicy: Always
             args:
-            - "rds"
             - "des"
             - "dts"
           containers:

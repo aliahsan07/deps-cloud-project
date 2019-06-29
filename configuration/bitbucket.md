@@ -1,4 +1,4 @@
-# Getting Started Using BitBucket
+# Configuring for BitBucket
 
 BitBucket is a common provider used by those seeking private repository support with great integration into existing Atlassian products (like Jira and Confluence).
 Below is the complete set of options that can be used to configure your integration.

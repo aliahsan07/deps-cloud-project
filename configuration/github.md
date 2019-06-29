@@ -1,4 +1,4 @@
-# Getting Started Using GitHub
+# Configuring for GitHub
 
 ```yaml
 accounts:

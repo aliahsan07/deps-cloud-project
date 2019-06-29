@@ -26,14 +26,6 @@ Once you've produced an image containing your local changes, you can easily upda
 $ docker-compose up -d
 ```
 
-### Testing Indexing Pipeline
-
-If you've made a change to the indexing pipeline, you can test it by restarting the [dependency indexer](../systems/dependency-indexer.md).
-
-```
-$ docker-compose restart dis
-```
-
 ## Developing Locally
 
 Local targets are available for development.
