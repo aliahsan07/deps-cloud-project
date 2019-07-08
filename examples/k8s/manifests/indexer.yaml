@@ -18,11 +18,11 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   namespace: depscloud-system
-  name: dis
+  name: indexer
   labels:
     app: depscloud
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "* */1 * * *"
   jobTemplate:
     spec:
       template:
@@ -36,12 +36,12 @@ spec:
             image: mjpitz/service-precheck:latest
             imagePullPolicy: Always
             args:
-            - "des"
-            - "dts"
+            - "extractor"
+            - "tracker"
           containers:
-          - name: dis
-            image: depscloud/dis:latest
-            imagePullPolicy: IfNotPresent
+          - name: indexer
+            image: depscloud/indexer:latest
+            imagePullPolicy: Always
             args:
             - "--cron"
             - "--rds-config=/etc/rds/config.yaml"

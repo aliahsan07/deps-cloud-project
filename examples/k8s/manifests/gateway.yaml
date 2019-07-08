@@ -24,11 +24,11 @@ spec:
         image: mjpitz/service-precheck:latest
         imagePullPolicy: Always
         args:
-        - "des"
-        - "dts"
+        - "extractor"
+        - "tracker"
       containers:
       - name: gateway
-        image: depscloud/gateway:latest
+        image: depscloud/gateway:0.0.5
         imagePullPolicy: Always
         resources:
           limits:
