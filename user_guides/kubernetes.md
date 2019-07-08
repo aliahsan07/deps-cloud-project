@@ -51,7 +51,7 @@ First let's create the namespace that these systems will be running in.
 $ kubectl apply -f manifests/_.yaml
 ```
 
-The dependency extraction service (`des.yaml`) is responsible for matching and extracting data from files.
+The dependency extraction service (`extractor.yaml`) is responsible for matching and extracting data from files.
 It's deployed as a replicated `Deployment` so that it can elastically scale to the needed request load.
 
 ```yaml
@@ -59,7 +59,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: depscloud-system
-  name: des
+  name: extractor
   labels:
     app: depscloud
 spec:
@@ -70,15 +70,15 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: des
+      app: extractor
   template:
     metadata:
       labels:
-        app: des
+        app: extractor
     spec:
       containers:
-      - name: des
-        image: depscloud/des:latest
+      - name: extractor
+        image: depscloud/extractor:latest
         imagePullPolicy: Always
         resources:
           limits:
@@ -94,12 +94,12 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: depscloud-system
-  name: des
+  name: extractor
   labels:
     app: depscloud
 spec:
   selector:
-    app: des
+    app: extractor
   clusterIP: None
   ports:
   - name: grpc
@@ -110,17 +110,17 @@ spec:
 This system requires no dependencies and can easily be applied to the cluster.
 
 ```
-$ kubectl apply -f manifests/des.yaml
+$ kubectl apply -f manifests/extractor.yaml
 ```
 
-The dependency tracker service (`dts.yaml`) contains the business logic for inserting and retrieving data from the database (`mysql.yaml`).
+The dependency tracker service (`tracker.yaml`) contains the business logic for inserting and retrieving data from the database (`mysql.yaml`).
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: depscloud-system
-  name: dts
+  name: tracker
   labels:
     app: depscloud
 spec:
@@ -131,11 +131,11 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: dts
+      app: tracker
   template:
     metadata:
       labels:
-        app: dts
+        app: tracker
     spec:
       initContainers:
       - name: service-precheck
@@ -146,7 +146,7 @@ spec:
         - "mysql-read"
       containers:
       - name: dts
-        image: depscloud/dts:latest
+        image: depscloud/tracker:latest
         imagePullPolicy: Always
         args:
         - --storage-driver=mysql
@@ -166,12 +166,12 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: depscloud-system
-  name: dts
+  name: tracker
   labels:
     app: depscloud
 spec:
   selector:
-    app: dts
+    app: tracker
   clusterIP: None
   ports:
   - name: grpc
@@ -183,7 +183,7 @@ To apply, you'll need to install both mysql and the tracker.
 
 ```
 $ kubectl apply -f manifests/mysql.yaml
-$ kubectl apply -f manifests/dts.yaml
+$ kubectl apply -f manifests/tracker.yaml
 ```
 
 These two services are implemented using [gRPC](http://grpc.io).
@@ -255,7 +255,7 @@ This system requires the extractor and tracker to be running before it can be st
 $ kubectl apply -f manifests/gateway.yaml
 ```
 
-The dependency indexer scheduled job (`dis.yaml`) is deployed on a schedule to allow maintainers of this process to adjust scheduling as needed.
+The dependency indexer scheduled job (`indexer.yaml`) is deployed on a schedule to allow maintainers of this process to adjust scheduling as needed.
 
 ```yaml
 apiVersion: v1
@@ -278,7 +278,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   namespace: depscloud-system
-  name: dis
+  name: indexer
   labels:
     app: depscloud
 spec:
@@ -296,11 +296,11 @@ spec:
             image: mjpitz/service-precheck:latest
             imagePullPolicy: Always
             args:
-            - "des"
-            - "dts"
+            - "extractor"
+            - "tracker"
           containers:
-          - name: dis
-            image: depscloud/dis:latest
+          - name: indexer
+            image: depscloud/indexer:latest
             imagePullPolicy: IfNotPresent
             args:
             - "--cron"
@@ -323,7 +323,7 @@ This is the last component that kicks off the whole indexing process.
 It can currently be run as a cron or as a daemon, but the preferred deployment is as a a cron.
 
 ```
-$ kubectl apply -f manifests/dis.yaml
+$ kubectl apply -f manifests/indexer.yaml
 ```
 
 ## 3 - Querying the deps.cloud Infrastructure
@@ -353,12 +353,12 @@ Simply apply all manifests as follows:
 ```
 $ kubectl apply -f manifests/
 namespace/depscloud-system created
-deployment.apps/des created
-service/des created
+deployment.apps/extractor created
+service/extractor created
 configmap/rds-config created
-cronjob.batch/dis created
-deployment.apps/dts created
-service/dts created
+cronjob.batch/indexer created
+deployment.apps/tracker created
+service/tracker created
 deployment.apps/gateway created
 service/gateway created
 configmap/mysql created
