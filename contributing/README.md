@@ -1,104 +1,29 @@
 # Contributing
 
 All projects are open to contributions.
+Before contributing to any project, please reach out to the team.
 
-## Developing using Docker
+## Contact Us
 
-In order to start developing using Docker, first deploy the stack using the directions .
-You can deploy the stack using either SQLite or MySQL as a backend data store.
+There are a few different mechanisms that you can use to get ahold of the team.
+FindCollabs is by and large used for status updates and is checked regularly.
+Both Gitter and Discord will often have faster response times.
 
-### Building Local Changes
+* [FindCollabs](https://findcollabs.com/project/deps-cloud-GIOlcUiHE9XD2UVlxrNl)
+* [Gitter](https://gitter.im/depscloud/community)
+* [Discord](https://discordapp.com/channels/584163839461949476/584163839461949484)
 
-To help facilitate contributions, each project has a `docker` target that builds the project inside a docker container.
+## Building and Running Projects
 
-| Project | Managed by | `docker` Target |
-|---|---|---|
-| Golang | `Makefile` | `make docker` |
-| NodeJS | `package.json` | `npm run docker` |
+There are two ways you can build and run this project.
+First you can develop using docker (the recommended way).
+Each repository ships with two dockerfiles, one for building and testing locally, another for publishing.
+The second way to build and run this project.
+This mechanism is not recommended, but can often help quickly testing things without the overhead of docker.
 
-The target produces a tagged image that you can deployed using the [docker stack](../docker).
+* [Developing in Docker](developing-in-docker.md) (Recommended)
+* [Developing Locally](developing-locally.md)
 
-### Deploying Local Changes
+## Code of Conduct
 
-Once you've produced an image containing your local changes, you can easily update your stack to pick up the new image.
-
-```
-$ docker-compose up -d
-```
-
-## Developing Locally
-
-Local targets are available for development.
-In order to leverage those targets, you will need to install the appropriate tooling.
-While most projects are written in Golang, there are a few that will require NodeJS or Ruby.
-To help simplify some of the setup, I've included a general guide to managing these versions locally.
-
-### Golang
-
-Install and manage Golang versions using [gvm](https://github.com/moovweb/gvm).
-
-```
-$ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-$ source ${HOME}/.gvm/scripts/gvm
-```
-
-Once installation is complete, you should be able to install and use specific versions of Golang.
-
-```
-$ gvm install go1.12.4
-$ gvm alias create default go1.12.4
-$ gvm use default
-$ go version
-go version go1.12.4 darwin/amd64
-$ which go
-${HOME}/.gvm/gos/go1.12.4/bin/go
-```
-
-### NodeJS
-
-Install and manage NodeJS versions using [nvm](https://github.com/nvm-sh/nvm).
-
-```sh
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-
-Once installation is complete, you'll need to restart your shell to pick up the new environment variables.
-Then, you should be able to install and use specific versions of NodeJS.
-
-```
-$ nvm install 10.15.3
-$ nvm alias default v10.15.3    # all new shells will use 10.15.3
-$ nvm use default               # changes node version for the current terminal
-$ nvm current                   # verify you're using the right version
-v10.15.3
-$ which node
-${HOME}/.nvm/versions/node/v10.15.3/bin/node
-```
-
-### Ruby
-
-Install and manage Ruby versions using [rvm](https://rvm.io/).
-
-```
-## OSX
-$ brew install gpg2
-$ gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-## Linux
-$ gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-$ curl -sSL https://get.rvm.io | bash -s stable
-```
-
-Once installation is complete, you'll need to restart your shell to pick up the new environment variables.
-Then, you should be able to install and use specific versions of Ruby.
-
-```
-$ rvm install 2.3.7
-$ rvm alias create default 2.3.7
-$ rvm use default
-$ rvm current
-ruby-2.3.7
-$ which ruby
-${HOME}/.rvm/rubies/ruby-2.3.7/bin/ruby
-```
+deps.cloud is governed by the [Contributor Covenant v1.4.1](../CODE_OF_CONDUCT.md).
