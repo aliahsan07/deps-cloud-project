@@ -51,13 +51,11 @@ affinity: {}
 schedule: "* */1 * * *"
 
 extractor:
-  nameOverride: ""
-  fullnameOverride: ""
+  address: "{{ .Release.Name }}-extractor:80"
   secretName: ""
 
 tracker:
-  nameOverride: ""
-  fullnameOverride: ""
+  address: "{{ .Release.Name }}-tracker:80"
   secretName: ""
 
 workers: 5
