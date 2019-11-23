@@ -51,3 +51,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+extractor:
+  nameOverride: ""
+  fullnameOverride: ""
+  secretName: ""
+
+tracker:
+  nameOverride: ""
+  fullnameOverride: ""
+  secretName: ""
+
+tls:
+  secretName: ""
