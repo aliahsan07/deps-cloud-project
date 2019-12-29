@@ -1,5 +1,6 @@
 accounts:
 - github:
-    strategy: HTTP
+    clone:
+      strategy: HTTP
     organizations:
     - deps-cloud
