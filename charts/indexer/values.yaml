@@ -63,6 +63,7 @@ workers: 5
 config:
   accounts:
     - github:
-        strategy: HTTP
+        clone:
+          strategy: HTTP
         organizations:
           - deps-cloud

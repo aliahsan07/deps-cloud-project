@@ -269,7 +269,8 @@ data:
   config.yaml: |
     accounts:
     - github:
-        strategy: HTTP
+        clone:
+          strategy: HTTP
         organizations:
         - deps-cloud
 

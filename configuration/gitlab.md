@@ -16,7 +16,8 @@ accounts:
     - <username>
     groups:
     - <groupname>
-    strategy: SSH | HTTP
+    clone:
+      strategy: SSH | HTTP
     private:
       token: <private_token>
     oauth:
@@ -39,5 +40,6 @@ accounts:
 - gitlab:
     groups:
     - nvidia
-    strategy: HTTP
+    clone:
+      strategy: HTTP
 ```

@@ -14,7 +14,8 @@ accounts:
     - <username>
     teams:
     - <teamname>
-    strategy: SSH | HTTP
+    clone:
+      strategy: SSH | HTTP
     basic:
       username: <username>
       password: <app_password>
@@ -38,5 +39,6 @@ accounts:
 - bitbucket:
     teams:
     - atlassian
-    strategy: HTTP
+    clone:
+      strategy: HTTP
 ```

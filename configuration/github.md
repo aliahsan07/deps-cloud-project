@@ -10,7 +10,8 @@ accounts:
     - <username>
     organizations:
     - <organization>
-    strategy: SSH | HTTP
+    clone:
+      strategy: SSH | HTTP
     oauth2:
       token: <oauth_token>
       token_type: <token_type>
@@ -33,5 +34,6 @@ accounts:
 - github:
     organizations:
     - google
-    strategy: HTTP
+    clone:
+      strategy: HTTP
 ```
